@@ -6,4 +6,6 @@ from django.http import HttpResponse
 
 def home_view(request, *args, **kwargs):
     # return HttpResponse("Hello world!")
-    return render(request, "home.html", {})
+    context = {}
+    context["user"] = request.user
+    return render(request, "home.html", context)
