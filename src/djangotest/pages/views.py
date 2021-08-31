@@ -9,3 +9,7 @@ def home_view(request, *args, **kwargs):
     context = {}
     context["user"] = request.user
     return render(request, "home.html", context)
+
+def add_post_view(request, *args, **kwargs):
+    context = {}
+    return render(request, 'addPost.html', context)
