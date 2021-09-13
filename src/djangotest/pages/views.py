@@ -1,5 +1,5 @@
 from django.http.response import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from blog.forms import NewPostForm
 from blog.models import Post
@@ -7,7 +7,9 @@ from blog.models import Post
 def home_view(request, *args, **kwargs):
     # return HttpResponse("Hello world!")
     context = {}
+    posts = [p for p in Post.objects.all()]
     context["user"] = request.user
+    context['posts'] = posts
     return render(request, "home.html", context)
 
 def add_post_view(request, *args, **kwargs):
@@ -21,7 +23,7 @@ def add_post_view(request, *args, **kwargs):
             # p = Post(title=title, body=body)
             # p.save()
             form.save()
-            return render(request, 'home.html', context)
+            return redirect('/')
     else:
         form = NewPostForm()
         context['form'] = form
