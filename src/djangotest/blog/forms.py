@@ -7,7 +7,7 @@ class NewPostForm(forms.ModelForm):
         fields = [
             'title',
             'body',
-            'user_id'
+            'author'
         ]
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control my-1'}),
