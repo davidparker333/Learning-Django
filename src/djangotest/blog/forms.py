@@ -6,13 +6,11 @@ class NewPostForm(forms.ModelForm):
         model = Post
         fields = [
             'title',
-            'body',
-            'author'
+            'body'
         ]
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control my-1'}),
-            'body': forms.Textarea(attrs={'class': 'form-control my-1'}),
-            'author': forms.Select(attrs={'class': 'form-control my-1'})
+            'body': forms.Textarea(attrs={'class': 'form-control my-1'})
         }
 
         # If I was using a regular form, not a model form
